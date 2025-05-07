@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>網路郵局</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- 頁首 LOGO -->
+<header class="header">
+    <img src="images/logo.png" alt="郵局 LOGO">
+</header>
+
+<!-- 導覽列 -->
+<nav class="navbar">
+    <ul>
+        <li>郵件查詢</li>
+        <li>郵件壽險保戶子女獎學金</li>
+        <li>數位支局服務</li>
+        <li>公債資訊</li>
+        <li>劃撥帳號戶名查詢</li>
+        <li>VISA線上續卡</li>
+        <li>客戶服務</li>
+        <li>通知設定</li>
+    </ul>
+</nav>
+
+<!-- 主體內容 -->
+<div class="main-content">
+    <!-- 左側登入表單 -->
+    <div class="login-panel">
+        <div class="tabs">
+            <button class="tab active" data-tab="id">身分證登入</button>
+            <button class="tab" data-tab="account">帳號登入</button>
+        </div>
+
+        <!-- 身分證登入表單 -->
+        <div class="form id-form active">
+            <label>身分證號</label>
+            <input type="text" placeholder="ID" />
+
+            <label>使用者代號</label>
+            <input type="text" placeholder="6-16位英數字" />
+
+            <label>網路密碼</label>
+            <div class="password-wrapper">
+                <input type="password" placeholder="6-16位英數字" />
+                <button class="toggle-visibility">👁️</button>
+            </div>
+
+            <label>驗證碼</label>
+            <div class="captcha-row">
+                <input type="text" placeholder="共四碼" />
+                <button type="button" class="refresh-btn">🔄 更換</button>
+                <img src="images/captcha.png" alt="輸入驗證碼" />
+            </div>
+
+            <div class="links">
+                <a href="#">線上開戶</a>
+                <a href="#">申請網路郵局(含APP)</a>
+            </div>
+
+            <button class="login-button">登入</button>
+        </div>
+
+        <!-- 帳號登入表單 -->
+        <div class="form account-form">
+            <div class="account-types">
+                <label><input type="radio" name="accType" checked /> 存簿帳號</label>
+                <label><input type="radio" name="accType" /> 劃撥帳號</label>
+                <label><input type="radio" name="accType" /> 公債帳號</label>
+            </div>
+
+            <label>帳號</label>
+            <input type="text" placeholder="請輸入14位數字" />
+
+            <label>使用者代號</label>
+            <input type="text" placeholder="6-16位英數字" />
+
+            <label>網路密碼</label>
+            <div class="password-wrapper">
+                <input type="password" placeholder="6-16位英數字" />
+                <button class="toggle-visibility">👁️</button>
+            </div>
+
+            <label>驗證碼</label>
+            <div class="captcha-row">
+                <input type="text" placeholder="共四碼" />
+                <button type="button" class="refresh-btn">🔄 更換</button>
+                <img src="images/captcha.png" alt="輸入驗證碼" />
+            </div>
+
+            <div class="links">
+                <a href="#">線上開戶</a>
+                <a href="#">申請網路郵局(含APP)</a>
+            </div>
+
+            <button class="login-button">登入</button>
+        </div>
+    </div>
+
+    <!-- 右側橫幅圖 -->
+    <div class="banner">
+        <img src="images/banner.png" alt="橫幅圖">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
