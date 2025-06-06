@@ -32,6 +32,57 @@ toggleButtons.forEach(button => {
     });
 });
 
+// 驗證碼功能（canvas 版本）
+function generateCaptcha() {
+    return Math.floor(1000 + Math.random() * 9000).toString();
+}
+
+function drawCaptcha(canvas, code) {
+    const ctx = canvas.getContext('2d');
+    // 清空
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 白底
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // 畫數字
+    ctx.font = 'bold 22px monospace';
+    ctx.fillStyle = '#222';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+    ctx.fillText(code, canvas.width / 2, canvas.height / 2);
+    // 畫黑色遮擋線
+    for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = '#222';
+        ctx.beginPath();
+        const y = Math.random() * canvas.height;
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, Math.random() * canvas.height);
+        ctx.lineWidth = 1 + Math.random() * 1.5;
+        ctx.stroke();
+    }
+}
+
+function setCaptcha(form) {
+    const canvas = form.querySelector('.captcha-canvas');
+    if (canvas) {
+        const code = generateCaptcha();
+        drawCaptcha(canvas, code);
+        canvas.dataset.captcha = code;
+    }
+}
+
+// 初始化所有表單的驗證碼
+forms.forEach(form => setCaptcha(form));
+
+// 綁定更換驗證碼按鈕
+const refreshBtns = document.querySelectorAll('.refresh-btn');
+refreshBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const form = btn.closest('.form');
+        setCaptcha(form);
+    });
+});
+
 // 假登入按鈕
 const loginButtons = document.querySelectorAll(".login-button");
 
@@ -50,7 +101,7 @@ loginButtons.forEach(btn => {
                 // 只在欄位下方插入一次提示
                 if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('required-msg')) {
                     const msg = document.createElement('div');
-                    msg.textContent = '*此為必填欄位';
+                    msg.textContent = '此為必填欄位';
                     msg.className = 'required-msg';
                     msg.style.color = 'red';
                     msg.style.fontSize = '0.9em';
@@ -64,6 +115,24 @@ loginButtons.forEach(btn => {
                 }
             }
         });
+        // 驗證碼比對（canvas 版本）
+        const captchaInput = activeForm.querySelector('.captcha-input');
+        const captchaCanvas = activeForm.querySelector('.captcha-canvas');
+        if (captchaInput && captchaCanvas) {
+            if (captchaInput.value.trim() !== captchaCanvas.dataset.captcha) {
+                hasEmpty = true;
+                if (!captchaInput.nextElementSibling || !captchaInput.nextElementSibling.classList.contains('required-msg')) {
+                    const msg = document.createElement('div');
+                    msg.textContent = '驗證碼錯誤';
+                    msg.className = 'required-msg';
+                    msg.style.color = 'red';
+                    msg.style.fontSize = '0.9em';
+                    msg.style.marginTop = '2px';
+                    captchaInput.after(msg);
+                }
+                setCaptcha(activeForm); // 錯誤時自動換新驗證碼
+            }
+        }
         if (hasEmpty) {
             e.preventDefault();
             return;
