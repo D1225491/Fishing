@@ -205,8 +205,7 @@ const bannerImages = [
     "images/banner.png",
     "images/bingpot.png",
     "images/caution.png",
-    "images/cash.png",
-    "images/scholarship.png"
+    "images/cash.png"
 ];
 const bannerImgElement = document.querySelector(".banner img");
 let bannerIndex = 0;
@@ -215,3 +214,15 @@ setInterval(() => {
     bannerIndex = (bannerIndex + 1) % bannerImages.length;
     bannerImgElement.src = bannerImages[bannerIndex];
 }, 3000); // 每3秒切換
+
+bannerImgElement.addEventListener('click', function() {
+    if (bannerImages[bannerIndex] === "images/banner.png") {
+        window.open("https://165dashboard.tw/", "_blank");
+    } else if (bannerImages[bannerIndex] === "images/bingpot.png") {
+        window.open("https://lottery.post.gov.tw/atm2025/", "_blank");
+    } else if (bannerImages[bannerIndex] === "images/caution.png") {
+        window.open("https://www.post.gov.tw/post/FileCenter/post_ww2/post_docdata_att/att_content/C9D56323-D707-4CE1-8775-43E323136251/45D57972-97EE-492F-9BB7-A1EB8A381182.jpg", "_blank");
+    } else if (bannerImages[bannerIndex] === "images/cash.png") {
+        window.open("https://www.post.gov.tw/post/FileCenter/post_ww2/ad/ad_linkpage/1140101_cash.html", "_blank");
+    }
+});

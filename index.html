@@ -28,10 +28,23 @@
 
 <!-- 主體內容 -->
 <div class="main-content" id="main-content">
+    <!-- 系統公告區域（跑馬燈效果，滾輪式） -->
+    <div class="system-announcement" style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #eee; margin:32px auto 0 auto; max-width:900px; padding:24px 32px; font-size:1.1em; color:#333; overflow:hidden; height:270px; position:relative;">
+        <h2 style="margin-top:0;">系統公告 Notice</h2>
+        <div class="marquee-wrapper" style="height:144px; overflow:hidden; position:relative;">
+            <ul class="marquee-list" style="margin:0; padding-left:1.2em; list-style:disc; position:absolute; top:0; left:0; width:100%; will-change:transform;">
+                <li>為配合行動郵局APP安全升級，請至APP商店更新至V1.35.0(含)以上版本</li>
+                <li>【重要訊息】114年3月19起「行動郵局」同一裝置僅允許3位用戶進行綁定</li>
+                <li>【重要訊息】本公司停止及終止約定轉帳帳號屬「虛擬通貨平台之入金帳號」服務事宜。</li>
+                <li>本公司每日凌晨0時至1時30分為例行主機系統維護作業，並視情形提前或延後維護作業時間，不便之處敬請見諒。</li>
+            </ul>
+        </div>
+    </div>
+
     <!-- 左側登入表單 -->
     <div class="login-panel">
         <div class="tabs">
-            <button class="tab active" data-tab="id">身分證登入</button>
+            <button class="tab active" data-tab="id">身分證(ID)登入</button>
             <button class="tab" data-tab="account">帳號登入</button>
         </div>
 
@@ -59,8 +72,8 @@
             </div>
 
             <div class="links">
-                <a href="#">線上開戶</a>
-                <a href="#">申請網路郵局(含APP)</a>
+                <a href="https://epost.post.gov.tw/pstDigit/home.html" target="_blank" style="color:#0072E3; text-decoration:none;">線上開戶</a>
+                <a href="https://ipost.post.gov.tw/pst/applyForiPost.html" target="_blank" style="color:#0072E3; text-decoration:none;">申請網路郵局(含APP)</a>
             </div>
 
             <button class="login-button">登入</button>
@@ -96,8 +109,8 @@
             </div>
 
             <div class="links">
-                <a href="#">線上開戶</a>
-                <a href="#">申請網路郵局(含APP)</a>
+                <a href="https://epost.post.gov.tw/pstDigit/home.html" target="_blank" style="color:#007bff; text-decoration:none;">線上開戶</a>
+                <a href="https://ipost.post.gov.tw/pst/applyForiPost.html" target="_blank" style="color:#007bff; text-decoration:none;">申請網路郵局(含APP)</a>
             </div>
 
             <button class="login-button">登入</button>
@@ -153,18 +166,21 @@
     <button class="back-main">返回首頁</button>
 </div>
 
-<!-- 系統公告區域（跑馬燈效果，滾輪式） -->
-<div class="system-announcement" style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #eee; margin:32px auto 0 auto; max-width:900px; padding:24px 32px; font-size:1.1em; color:#333; overflow:hidden; height:270px; position:relative;">
-    <h2 style="margin-top:0;">系統公告 Notice</h2>
-    <div class="marquee-wrapper" style="height:144px; overflow:hidden; position:relative;">
-        <ul class="marquee-list" style="margin:0; padding-left:1.2em; list-style:disc; position:absolute; top:0; left:0; width:100%; will-change:transform;">
-            <li>為配合行動郵局APP安全升級，請至APP商店更新至V1.35.0(含)以上版本</li>
-            <li>【重要訊息】114年3月19起「行動郵局」同一裝置僅允許3位用戶進行綁定</li>
-            <li>【重要訊息】本公司停止及終止約定轉帳帳號屬「虛擬通貨平台之入金帳號」服務事宜。</li>
-            <li>本公司每日凌晨0時至1時30分為例行主機系統維護作業，並視情形提前或延後維護作業時間，不便之處敬請見諒。</li>
-        </ul>
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-images">
+            <a href="https://www.post.gov.tw/post/internet/B_saving/index.jsp?ID=30111" target="_blank">
+                <img src="images/saving.png" alt="儲匯" />
+            </a>
+        </div>
+        <div class="footer-info">
+            <strong>顧客服務專線：0800-700-365</strong><br>
+            地址：台北市中正區重慶南路一段<br>
+            電話：0800-700-365<br>
+            Email：service@post.gov.tw
+        </div>
     </div>
-</div>
+</footer>
 
 <script src="script.js"></script>
 <script>
