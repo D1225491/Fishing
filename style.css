@@ -16,25 +16,24 @@ body {
 
 .top-bar {
     background: linear-gradient(to bottom, #ffffff, #e6e6e6); /* 上白下灰的漸層 */
-    padding: 4px 20px;
+    padding: 8.2px 40px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 明顯陰影 */
-    font-size: 0.9rem;
+    font-size: 0.68rem;
     color: #333;
     position: relative;
     z-index: 10;
 }
-
 .top-bar-content {
     display: flex;
     justify-content: flex-end;
-    gap: 16px;
+    gap: 15px;
+    padding-right: 100px; /* 新增右側留白 */
 }
 .top-bar-content a {
     color: #333;
     text-decoration: none;
     font-weight: 400;
 }
-
 .top-bar-content a:hover {
     text-decoration: underline;
     color: #006400; /* 郵局綠 */
@@ -50,63 +49,47 @@ body {
 }
 
 .logo img {
-    height: 70px;
+    height: 74px;
     margin-right: 8px;
-    margin-left: 240px; /* 新增這行，數值可依需求調整 */
+    margin-left: 245px;
 }
 
-.logo span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.logo small {
-    color: gray;
-}
-/* 綠色導覽列 */
 nav {
-    background: #7db144;
-    padding: 10px 0;
-    height: auto;
+    background: linear-gradient(to bottom, #A0C770, #6D973B);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
     margin: 0;
-    padding: 0;
+    padding: 0 165px 0 0; /* 右側留白 */
 }
 
 nav li {
-    padding: 0;
-    height: 38px;
+    margin: 0;
+}
+
+nav li a {
+    display: block;
+    padding: 8px 12px;
+    height: 46px;
+    color: white;
+    font-weight: 300;
+    text-decoration: none;
+    transition: 0.2s;
     display: flex;
     align-items: center;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-/* 新增郵件查詢樣式 */
-.navbar ul li a {
-    color: inherit;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-    display: block;
-    height: 38px;
-    padding: 8px 12px;
-    box-sizing: border-box;
+nav li a:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2b2b2b;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.navbar ul li a:hover {
-    background: #fff;
-    color: #000;
-    text-decoration: none;
-    line-height: 1.5;
-}
 
 /* 主體內容新排版 */
 .main-flex {
