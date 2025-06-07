@@ -203,7 +203,10 @@ backBtns.forEach(btn => {
 // 橫幅圖輪播
 const bannerImages = [
     "images/banner.png",
-    "images/caution.png"
+    "images/bingpot.png",
+    "images/caution.png",
+    "images/cash.png",
+    "images/scholarship.png"
 ];
 const bannerImgElement = document.querySelector(".banner img");
 let bannerIndex = 0;
