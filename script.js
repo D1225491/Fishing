@@ -2,7 +2,7 @@
 const tabs = document.querySelectorAll(".tab");
 const forms = document.querySelectorAll(".form");
 
-alert("提醒您：本頁為仿網路郵局介面之學生專案，僅供展示與練習，不具備真實功能，請勿輸入真實資料。");
+alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
 
 tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
@@ -101,7 +101,7 @@ loginButtons.forEach(btn => {
                 // 只在欄位下方插入一次提示
                 if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('required-msg')) {
                     const msg = document.createElement('div');
-                    msg.textContent = '此為必填欄位';
+                    msg.textContent = '*此為必填欄位';
                     msg.className = 'required-msg';
                     msg.style.color = 'red';
                     msg.style.fontSize = '0.9em';
@@ -139,4 +139,63 @@ loginButtons.forEach(btn => {
         }
         alert("登入成功！歡迎使用中華郵政網路郵局 👋");
     });
+});
+
+// 郵件壽險保戶子女獎學金區塊顯示/隱藏
+const scholarshipLink = document.getElementById("scholarship-link");
+const mainContent = document.getElementById("main-content");
+const scholarshipContent = document.getElementById("scholarship-content");
+const backMainBtn = document.getElementById("back-main");
+
+if (scholarshipLink && mainContent && scholarshipContent && backMainBtn) {
+    scholarshipLink.addEventListener("click", function(e) {
+        e.preventDefault();
+        mainContent.style.display = "none";
+        scholarshipContent.style.display = "block";
+    });
+    backMainBtn.addEventListener("click", function() {
+        scholarshipContent.style.display = "none";
+        mainContent.style.display = "flex";
+    });
+}
+
+// 導覽頁面切換功能
+const pageLinks = [
+  { linkId: 'scholarship-link', contentId: 'scholarship-content' },
+  { linkId: 'digital-link', contentId: 'digital-content' },
+  { linkId: 'bond-link', contentId: 'bond-content' },
+  { linkId: 'account-link', contentId: 'account-content' },
+  { linkId: 'visa-link', contentId: 'visa-content' },
+  { linkId: 'service-link', contentId: 'service-content' },
+  { linkId: 'notification-link', contentId: 'notification-content' }
+];
+
+pageLinks.forEach(({ linkId, contentId }) => {
+  const link = document.getElementById(linkId);
+  const content = document.getElementById(contentId);
+  if (link && content && mainContent) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      mainContent.style.display = 'none';
+      // 隱藏所有內容區塊
+      pageLinks.forEach(({ contentId }) => {
+        const c = document.getElementById(contentId);
+        if (c) c.style.display = 'none';
+      });
+      content.style.display = 'block';
+    });
+  }
+});
+
+// 返回首頁功能
+const backBtns = document.querySelectorAll('.back-main');
+backBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // 隱藏所有內容區塊
+    pageLinks.forEach(({ contentId }) => {
+      const c = document.getElementById(contentId);
+      if (c) c.style.display = 'none';
+    });
+    mainContent.style.display = 'flex';
+  });
 });

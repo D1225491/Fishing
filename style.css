@@ -38,6 +38,7 @@ body {
 nav {
     background: #7db144;
     padding: 10px 0;
+    height: auto;
 }
 
 nav ul {
@@ -50,10 +51,31 @@ nav ul {
 }
 
 nav li {
-    padding: 8px 12px;
+    padding: 0;
+    height: 38px;
+    display: flex;
+    align-items: center;
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* 新增郵件查詢樣式 */
+.navbar ul li a {
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    display: block;
+    height: 38px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+.navbar ul li a:hover {
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.5;
 }
 
 /* 主體區域 - 使用 CSS Grid */
