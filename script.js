@@ -2,7 +2,7 @@
 const tabs = document.querySelectorAll(".tab");
 const forms = document.querySelectorAll(".form");
 
-alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
+//alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
 
 tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
