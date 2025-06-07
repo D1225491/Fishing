@@ -14,6 +14,32 @@ body {
     background-color: #f5f5f5;
 }
 
+.top-bar {
+    background: linear-gradient(to bottom, #ffffff, #e6e6e6); /* 上白下灰的漸層 */
+    padding: 4px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 明顯陰影 */
+    font-size: 0.9rem;
+    color: #333;
+    position: relative;
+    z-index: 10;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+.top-bar-content a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.top-bar-content a:hover {
+    text-decoration: underline;
+    color: #006400; /* 郵局綠 */
+}
+
 /* 頁首 */
 .header {
     background: #fff;
@@ -24,9 +50,9 @@ body {
 }
 
 .logo img {
-    height: 32px;
+    height: 70px;
     margin-right: 8px;
-    margin-left: 1px; /* 新增這行，數值可依需求調整 */
+    margin-left: 240px; /* 新增這行，數值可依需求調整 */
 }
 
 .logo span {
@@ -82,17 +108,135 @@ nav li {
     line-height: 1.5;
 }
 
-/* 主體區域 - 使用 CSS Grid */
-.main-content {
-    display: grid;
-    grid-template-columns: 350px 1fr; /* 左側登入欄 + 右側橫幅圖 */
-    gap: 30px;
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: auto;
-    align-items: start;
+/* 主體內容新排版 */
+.main-flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
 }
 
+/* 登入+輪播父層容器置中與最大寬度 */
+.login-banner-center-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.login-banner-group {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+}
+
+@media (max-width: 1200px) {
+  .login-banner-center-wrap {
+    max-width: 100vw;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-banner-center-wrap, .login-banner-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .banner-square {
+    margin-left: 0;
+    margin-top: 18px;
+    height: 220px;
+    min-height: 120px;
+  }
+  .login-panel-square {
+    width: 100%;
+    height: 320px;
+    min-width: 0;
+    min-height: 120px;
+  }
+}
+
+.login-panel-square {
+    width: 300px;
+    height: 300px;
+    padding: 1em;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.login-panel-square.shrink-font {
+    font-size: 0.85em;
+}
+
+.form {
+    flex-grow: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.login-panel-square .tabs {
+    margin-bottom: 8px;
+}
+.login-panel-square label {
+    font-size: 0.98em;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+.login-panel-square input[type="text"],
+.login-panel-square input[type="password"] {
+    padding: 5px 6px;
+    font-size: 0.97em;
+    height: 28px;
+    margin-bottom: 4px;
+}
+.login-panel-square .password-wrapper {
+    margin-bottom: 2px;
+}
+.login-panel-square .captcha-row {
+    gap: 4px;
+    margin-bottom: 4px;
+}
+.login-panel-square .links {
+    margin-top: 4px;
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.login-panel-square .login-button {
+    margin-top: 8px;
+    padding: 7px;
+    font-size: 1em;
+}
+.banner-square {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 340px;
+    min-height: 240px;
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 8px;
+    margin-left: 24px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.06);
+}
+.banner-square img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
 
 /* 左側登入面板 */
 .login-panel {
@@ -218,7 +362,7 @@ input[type="password"] {
 
 /* 頁尾樣式 */
 .site-footer {
-    background: #e0e0e0;
+    background: #9D9D9D;
     padding: 24px 0 18px 0;
     border-top: 1px solid #ccc;
     margin-top: 40px;
@@ -238,14 +382,14 @@ input[type="password"] {
     margin-right: 32px;
 }
 .footer-images img {
-    height: 38px;
+    height: 76px;
     margin-right: 12px;
     vertical-align: middle;
 }
 .footer-info {
     text-align: center;
-    font-size: 1.05em;
-    color: #333;
+    font-size: 0.92em;
+    color: #fff;
     line-height: 1.8;
     min-width: 260px;
 }
@@ -262,4 +406,309 @@ input[type="password"] {
     .footer-info {
         text-align: center;
     }
+}
+
+/* 系統公告區塊 flex 排版與響應式 */
+.announcement-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+}
+.notice-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 60px;
+}
+.green-circle {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #b6e5b6 60%, #7db144 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    position: relative;
+    box-shadow: 0 2px 8px #d0e8d0;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.green-circle:focus, .green-circle:hover {
+    box-shadow: 0 4px 16px #b6e5b6;
+}
+.circle-dropdown {
+    display: none;
+    position: absolute;
+    left: 110%;
+    top: 0;
+    min-width: 110px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #b6e5b6;
+    padding: 8px 0;
+    z-index: 10;
+    flex-direction: column;
+    gap: 0;
+}
+.green-circle.open .circle-dropdown {
+    display: flex;
+}
+.circle-dropdown a {
+    color: #388e3c;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+.circle-dropdown a:hover {
+    background: #e8f5e9;
+}
+
+/* 橘色圓形區塊 */
+.orange-icons-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 24px;
+    gap: 18px;
+}
+.orange-circle-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.orange-circle {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #ffe0b2 60%, #ff9800 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px #ffe0b2;
+    transition: box-shadow 0.2s;
+}
+.orange-circle:hover {
+    box-shadow: 0 4px 16px #ffcc80;
+}
+.circle-title {
+    font-size: 1em;
+    color: #ff9800;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* 系統公告白底置中區塊 */
+#system-announcement {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #e0e0e0;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 24px 32px;
+    font-size: 1.1em;
+    color: #333;
+    overflow: hidden;
+    position: relative;
+}
+@media (max-width: 900px) {
+    #system-announcement {
+        max-width: 98vw;
+        padding: 16px 6px;
+        margin: 24px auto 0 auto;
+    }
+}
+
+/* 系統公告新區塊樣式 */
+.notice-section {
+  max-width: 1100px;
+  margin: 40px auto 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px #e0e0e0;
+  padding: 32px 24px 24px 24px;
+}
+.notice-top {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.notice {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+.notice h2 {
+  color: #A1C934;
+  font-size: 1.35em;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+.notice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notice-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  font-size: 1.05em;
+  color: #333;
+}
+.notice-list li::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #A1C934;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+.feature-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  min-width: 160px;
+}
+.feature-icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.green-icon {
+  width: 100px;
+  height: 100px;
+  background: #A1C934;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px #d0e8d0;
+  margin-bottom: 4px;
+}
+.feature-icon-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.feature-icon-block ul li {
+  margin-bottom: 2px;
+}
+.feature-icon-block ul li a {
+  color: #388e3c;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.feature-icon-block ul li a:hover {
+  color: #A1C934;
+  text-decoration: underline;
+}
+.notice-bottom {
+  margin-top: 36px;
+}
+.orange-icons-row2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: flex-end;
+}
+.orange-icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.orange-icon {
+  width: 100px;
+  height: 100px;
+  background: #FFA500;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 12px #ffd580;
+  transition: transform 0.2s;
+}
+.orange-icon-block a:hover .orange-icon {
+  transform: scale(1.05);
+}
+.icon-title {
+  font-size: 1.08em;
+  color: #FFA500;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .notice-section {
+    padding: 18px 4vw 12px 4vw;
+  }
+  .notice-top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .feature-icons {
+    flex-direction: row;
+    gap: 18px;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  .feature-icon-block {
+    min-width: 0;
+  }
+  .orange-icons-row2 {
+    gap: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .notice-section {
+    padding: 8px 2vw 8px 2vw;
+  }
+  .notice-bottom {
+    margin-top: 18px;
+  }
+  .orange-icons-row2 {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .orange-icon-block {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+  }
+  .icon-title {
+    text-align: left;
+    margin-top: 0;
+  }
+}
+
+.row-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+.id-short-input {
+    width: 110px;
+    min-width: 0;
+    flex-shrink: 0;
+    font-size: 0.97em;
+    height: 28px;
+    padding: 5px 6px;
 }

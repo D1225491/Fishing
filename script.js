@@ -2,7 +2,7 @@
 const tabs = document.querySelectorAll(".tab");
 const forms = document.querySelectorAll(".form");
 
-//alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
+alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
 
 tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
@@ -104,8 +104,8 @@ loginButtons.forEach(btn => {
                     msg.textContent = '*此為必填欄位';
                     msg.className = 'required-msg';
                     msg.style.color = 'red';
-                    msg.style.fontSize = '0.9em';
-                    msg.style.marginTop = '2px';
+                    msg.style.fontSize = '0.5em';
+                    msg.style.marginTop = '0.5px';
                     // 處理密碼欄位包在 wrapper 內的情況
                     if (input.parentElement.classList.contains('password-wrapper')) {
                         input.parentElement.after(msg);
@@ -161,68 +161,100 @@ if (scholarshipLink && mainContent && scholarshipContent && backMainBtn) {
 
 // 導覽頁面切換功能
 const pageLinks = [
-  { linkId: 'scholarship-link', contentId: 'scholarship-content' },
-  { linkId: 'digital-link', contentId: 'digital-content' },
-  { linkId: 'bond-link', contentId: 'bond-content' },
-  { linkId: 'account-link', contentId: 'account-content' },
-  { linkId: 'visa-link', contentId: 'visa-content' },
-  { linkId: 'service-link', contentId: 'service-content' },
-  { linkId: 'notification-link', contentId: 'notification-content' }
+    { linkId: 'scholarship-link', contentId: 'scholarship-content' },
+    { linkId: 'digital-link', contentId: 'digital-content' },
+    { linkId: 'bond-link', contentId: 'bond-content' },
+    { linkId: 'account-link', contentId: 'account-content' },
+    { linkId: 'visa-link', contentId: 'visa-content' },
+    { linkId: 'service-link', contentId: 'service-content' },
+    { linkId: 'notification-link', contentId: 'notification-content' }
 ];
 
 pageLinks.forEach(({ linkId, contentId }) => {
-  const link = document.getElementById(linkId);
-  const content = document.getElementById(contentId);
-  if (link && content && mainContent) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      mainContent.style.display = 'none';
-      // 隱藏所有內容區塊
-      pageLinks.forEach(({ contentId }) => {
-        const c = document.getElementById(contentId);
-        if (c) c.style.display = 'none';
-      });
-      content.style.display = 'block';
-    });
-  }
+    const link = document.getElementById(linkId);
+    const content = document.getElementById(contentId);
+    if (link && content && mainContent) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            mainContent.style.display = 'none';
+            // 隱藏所有內容區塊
+            pageLinks.forEach(({ contentId }) => {
+                const c = document.getElementById(contentId);
+                if (c) c.style.display = 'none';
+            });
+            content.style.display = 'block';
+        });
+    }
 });
 
 // 返回首頁功能
 const backBtns = document.querySelectorAll('.back-main');
 backBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
-    // 隱藏所有內容區塊
-    pageLinks.forEach(({ contentId }) => {
-      const c = document.getElementById(contentId);
-      if (c) c.style.display = 'none';
+    btn.addEventListener('click', function() {
+        // 隱藏所有內容區塊
+        pageLinks.forEach(({ contentId }) => {
+            const c = document.getElementById(contentId);
+            if (c) c.style.display = 'none';
+        });
+        mainContent.style.display = 'flex';
     });
-    mainContent.style.display = 'flex';
-  });
 });
 
-// 橫幅圖輪播
+// 輪播圖片功能（支援多張圖）
 const bannerImages = [
     "images/banner.png",
     "images/bingpot.png",
+    "images/cash.png",
     "images/caution.png",
-    "images/cash.png"
 ];
-const bannerImgElement = document.querySelector(".banner img");
+const bannerImgElement = document.querySelector(".banner-square img");
 let bannerIndex = 0;
+
+if (bannerImgElement) {
+    bannerImgElement.addEventListener('click', function() {
+        if (bannerImages[bannerIndex].includes('banner.png')) {
+            window.open('https://165dashboard.tw/', '_blank');
+        } else if (bannerImages[bannerIndex].includes('bingpot.png')) {
+            window.open('https://lottery.post.gov.tw/atm2025/', '_blank');
+        } else if (bannerImages[bannerIndex].includes('caution.png')) {
+            window.open('https://www.post.gov.tw/post/FileCenter/post_ww2/post_docdata_att/att_content/C9D56323-D707-4CE1-8775-43E323136251/45D57972-97EE-492F-9BB7-A1EB8A381182.jpg', '_blank');
+        } else if (bannerImages[bannerIndex].includes('cash.png')) {
+            window.open('https://www.post.gov.tw/post/FileCenter/post_ww2/ad/ad_linkpage/1140101_cash.html', '_blank');
+        }
+    });
+}
+
+function showBannerImg(idx) {
+    if (bannerImgElement) {
+        bannerImgElement.src = bannerImages[idx];
+    }
+}
+showBannerImg(bannerIndex);
 
 setInterval(() => {
     bannerIndex = (bannerIndex + 1) % bannerImages.length;
-    bannerImgElement.src = bannerImages[bannerIndex];
-}, 3000); // 每3秒切換
+    showBannerImg(bannerIndex);
+}, 3000);
 
-bannerImgElement.addEventListener('click', function() {
-    if (bannerImages[bannerIndex] === "images/banner.png") {
-        window.open("https://165dashboard.tw/", "_blank");
-    } else if (bannerImages[bannerIndex] === "images/bingpot.png") {
-        window.open("https://lottery.post.gov.tw/atm2025/", "_blank");
-    } else if (bannerImages[bannerIndex] === "images/caution.png") {
-        window.open("https://www.post.gov.tw/post/FileCenter/post_ww2/post_docdata_att/att_content/C9D56323-D707-4CE1-8775-43E323136251/45D57972-97EE-492F-9BB7-A1EB8A381182.jpg", "_blank");
-    } else if (bannerImages[bannerIndex] === "images/cash.png") {
-        window.open("https://www.post.gov.tw/post/FileCenter/post_ww2/ad/ad_linkpage/1140101_cash.html", "_blank");
-    }
-});
+// 公告區綠色圓形下拉互動
+function setupNoticeDropdowns() {
+    const circles = document.querySelectorAll('.green-circle');
+    circles.forEach(circle => {
+        circle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // 關閉其他
+            circles.forEach(c => { if (c !== circle) c.classList.remove('open'); });
+            // 切換自己
+            circle.classList.toggle('open');
+        });
+    });
+    // 點擊其他地方自動收合
+    document.addEventListener('click', function() {
+        circles.forEach(c => c.classList.remove('open'));
+    });
+}
+window.addEventListener('DOMContentLoaded', setupNoticeDropdowns);
+
+// 若 tab 切換也需調整
+const tabBtns = document.querySelectorAll('.tab');
+tabBtns.forEach(btn => btn.addEventListener('click', adjustLoginPanelFont));
