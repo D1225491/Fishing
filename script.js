@@ -199,3 +199,16 @@ backBtns.forEach(btn => {
     mainContent.style.display = 'flex';
   });
 });
+
+// 橫幅圖輪播
+const bannerImages = [
+    "images/banner.png",
+    "images/caution.png"
+];
+const bannerImgElement = document.querySelector(".banner img");
+let bannerIndex = 0;
+
+setInterval(() => {
+    bannerIndex = (bannerIndex + 1) % bannerImages.length;
+    bannerImgElement.src = bannerImages[bannerIndex];
+}, 3000); // 每3秒切換
