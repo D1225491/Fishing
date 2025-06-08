@@ -98,21 +98,6 @@ loginButtons.forEach(btn => {
         activeForm.querySelectorAll('input').forEach(input => {
             if (input.value.trim() === "") {
                 hasEmpty = true;
-                // 只在欄位下方插入一次提示
-                if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('required-msg')) {
-                    const msg = document.createElement('div');
-                    msg.textContent = '*此為必填欄位';
-                    msg.className = 'required-msg';
-                    msg.style.color = 'red';
-                    msg.style.fontSize = '0.5em';
-                    msg.style.marginTop = '0.5px';
-                    // 處理密碼欄位包在 wrapper 內的情況
-                    if (input.parentElement.classList.contains('password-wrapper')) {
-                        input.parentElement.after(msg);
-                    } else {
-                        input.after(msg);
-                    }
-                }
             }
         });
         // 驗證碼比對（canvas 版本）
@@ -140,6 +125,37 @@ loginButtons.forEach(btn => {
         alert("登入成功！歡迎使用中華郵政網路郵局 👋");
     });
 });
+
+// 驗證登入欄位是否為空，若為空則 alert
+function validateLogin(formSelector) {
+    const form = document.querySelector(formSelector);
+    if (!form) return;
+    form.addEventListener('click', function(e) {
+        if (e.target.classList.contains('login-button')) {
+            // 找到同一 row 的 input
+            const row = e.target.closest('.row-inline');
+            const input = row ? row.querySelector('input') : null;
+            // 取得所有需要檢查的 input
+            const inputs = Array.from(form.querySelectorAll('input[type="text"], input[type="password"]'));
+            let empty = false;
+            for (const inp of inputs) {
+                if (!inp.value.trim()) {
+                    empty = true;
+                    break;
+                }
+            }
+            if (empty) {
+                alert('請完整填寫所有欄位');
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+}
+
+// 初始化兩個表單的驗證
+validateLogin('.id-form');
+validateLogin('.account-form');
 
 // 郵件壽險保戶子女獎學金區塊顯示/隱藏
 const scholarshipLink = document.getElementById("scholarship-link");

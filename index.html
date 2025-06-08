@@ -56,21 +56,25 @@
                         <label for="id-input" style="margin-bottom:0;">身分證號</label>
                         <input id="id-input" type="text" placeholder="ID" class="id-short-input" />
                     </div>
-
-                    <label>使用者代號</label>
-                    <input type="text" placeholder="6-16位英數字" />
-
-                    <label>網路密碼</label>
-                    <div class="password-wrapper">
-                        <input type="password" placeholder="6-16位英數字" />
-                        <button class="toggle-visibility">👁️</button>
+                    <div class="row-inline">
+                        <label for="user-id-input">使用者代號</label>
+                        <input id="user-id-input" type="text" placeholder="6-16位英數字" />
                     </div>
-
-                    <label>驗證碼</label>
-                    <div class="captcha-row">
-                        <input type="text" class="captcha-input" placeholder="共四碼" maxlength="4" />
+                    <div class="row-inline">
+                        <label for="user-pw-input">網路密碼</label>
+                        <div class="password-wrapper" style="flex:1;">
+                            <input id="user-pw-input" type="password" placeholder="6-16位英數字" style="width:100%;" />
+                            <button class="toggle-visibility">👁️</button>
+                        </div>
+                    </div>
+                    <div class="row-inline">
+                        <label for="captcha-input">驗證碼</label>
+                        <input id="captcha-input" type="text" class="captcha-input" placeholder="共四碼" maxlength="4" />
+                        <button class="login-button" style="margin-top:0; margin-left:12px; width:auto; min-width:70px; padding:8px 18px;">登入</button>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;margin-left:90px;margin-top:2px;">
                         <span class="captcha-canvas-wrapper" style="display:inline-block; vertical-align:middle;">
-                          <canvas class="captcha-canvas" width="70" height="32" style="background:#fff; border-radius:4px; vertical-align:middle;"></canvas>
+                            <canvas class="captcha-canvas" width="70" height="32" style="background:#fff; border-radius:4px; vertical-align:middle;"></canvas>
                         </span>
                         <button type="button" class="refresh-btn">🔄 更換</button>
                     </div>
@@ -79,8 +83,6 @@
                         <a href="https://epost.post.gov.tw/pstDigit/home.html" target="_blank" style="color:#0072E3; text-decoration:none;">線上開戶</a>
                         <a href="https://ipost.post.gov.tw/pst/applyForiPost.html" target="_blank" style="color:#0072E3; text-decoration:none;">申請網路郵局(含APP)</a>
                     </div>
-
-                    <button class="login-button">登入</button>
                 </div>
 
                 <!-- 帳號登入表單 -->
@@ -90,28 +92,31 @@
                         <label><input type="radio" name="accType" /> 劃撥帳號</label>
                         <label><input type="radio" name="accType" /> 公債帳號</label>
                     </div>
-
-                    <label>帳號</label>
-                    <input type="text" placeholder="請輸入14位數字" />
-
-                    <label>使用者代號</label>
-                    <input type="text" placeholder="6-16位英數字" />
-
-                    <label>網路密碼</label>
-                    <div class="password-wrapper">
-                        <input type="password" placeholder="6-16位英數字" />
-                        <button class="toggle-visibility">👁️</button>
+                    <div class="row-inline">
+                        <label for="account-input">帳號</label>
+                        <input id="account-input" type="text" placeholder="請輸入14位數字" />
                     </div>
-
-                    <label>驗證碼</label>
-                    <div class="captcha-row">
-                        <input type="text" class="captcha-input" placeholder="共四碼" maxlength="4" />
+                    <div class="row-inline">
+                        <label for="acc-user-id-input">使用者代號</label>
+                        <input id="acc-user-id-input" type="text" placeholder="6-16位英數字" />
+                    </div>
+                    <div class="row-inline">
+                        <label for="acc-user-pw-input">網路密碼</label>
+                        <div class="password-wrapper" style="flex:1;">
+                            <input id="acc-user-pw-input" type="password" placeholder="6-16位英數字" style="width:100%;" />
+                            <button class="toggle-visibility">👁️</button>
+                        </div>
+                    </div>
+                    <div class="row-inline">
+                        <label for="acc-captcha-input">驗證碼</label>
+                        <input id="acc-captcha-input" type="text" class="captcha-input" placeholder="共四碼" maxlength="4" />
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;margin-left:90px;margin-top:2px;">
                         <span class="captcha-canvas-wrapper" style="display:inline-block; vertical-align:middle;">
-                          <canvas class="captcha-canvas" width="70" height="32" style="background:#fff; border-radius:4px; vertical-align:middle;"></canvas>
+                            <canvas class="captcha-canvas" width="70" height="32" style="background:#fff; border-radius:4px; vertical-align:middle;"></canvas>
                         </span>
                         <button type="button" class="refresh-btn">🔄 更換</button>
                     </div>
-
                     <div class="links">
                         <a href="https://epost.post.gov.tw/pstDigit/home.html" target="_blank" style="color:#007bff; text-decoration:none;">線上開戶</a>
                         <a href="https://ipost.post.gov.tw/pst/applyForiPost.html" target="_blank" style="color:#007bff; text-decoration:none;">申請網路郵局(含APP)</a>
@@ -124,62 +129,62 @@
             <div class="banner-square">
                 <img src="images/banner.png" alt="橫幅圖">
             </div>
+            <!-- 系統公告新區塊 -->
+            <div class="notice-section">
+                <div class="notice-top">
+                    <div class="notice">
+                        <h2>系統公告 Notice</h2>
+                        <ul class="notice-list">
+                            <li>為配合行動郵局APP安全升級，請至APP商店更新至V1.35.0(含)以上版本</li>
+                            <li>【重要訊息】114年3月19起「行動郵局」同一裝置僅允許3位用戶進行綁定</li>
+                            <li>【重要訊息】本公司停止及終止約定轉帳帳號屬「虛擬通貨平台之入金帳號」服務事宜。</li>
+                            <li>本公司每日凌晨0時至1時30分為例行主機系統維護作業，並視情形提前或延後維護作業時間，不便之處敬請見諒。</li>
+                        </ul>
+                    </div>
+                    <div class="feature-icons">
+                        <div class="feature-icon-block">
+                            <img src="/images/green1.png" alt="利率查詢" class="green-icon" />
+                            <ul>
+                                <li><a href="#">利率查詢</a></li>
+                                <li><a href="#">保單費率</a></li>
+                                <li><a href="#">外匯匯率</a></li>
+                            </ul>
+                        </div>
+                        <div class="feature-icon-block">
+                            <img src="/images/green2.png" alt="壽險" class="green-icon" />
+                            <ul>
+                                <li><a href="#">壽險</a></li>
+                                <li><a href="#">保單查詢</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="notice-bottom">
+                    <div class="orange-icons-row2">
+                        <div class="orange-icon-block">
+                            <a href="#"><img src="/images/orange1.png" alt="友善專區" class="orange-icon" /></a>
+                            <div class="icon-title">友善專區</div>
+                        </div>
+                        <div class="orange-icon-block">
+                            <a href="#"><img src="/images/orange2.png" alt="理財專區" class="orange-icon" /></a>
+                            <div class="icon-title">理財專區</div>
+                        </div>
+                        <div class="orange-icon-block">
+                            <a href="#"><img src="/images/orange3.png" alt="精打細算" class="orange-icon" /></a>
+                            <div class="icon-title">精打細算</div>
+                        </div>
+                        <div class="orange-icon-block">
+                            <a href="#"><img src="/images/orange4.png" alt="繳費專區" class="orange-icon" /></a>
+                            <div class="icon-title">繳費專區</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- 系統公告新區塊 -->
-<div class="notice-section">
-    <div class="notice-top">
-        <div class="notice">
-            <h2>系統公告 Notice</h2>
-            <ul class="notice-list">
-                <li>為配合行動郵局APP安全升級，請至APP商店更新至V1.35.0(含)以上版本</li>
-                <li>【重要訊息】114年3月19起「行動郵局」同一裝置僅允許3位用戶進行綁定</li>
-                <li>【重要訊息】本公司停止及終止約定轉帳帳號屬「虛擬通貨平台之入金帳號」服務事宜。</li>
-                <li>本公司每日凌晨0時至1時30分為例行主機系統維護作業，並視情形提前或延後維護作業時間，不便之處敬請見諒。</li>
-            </ul>
-        </div>
-        <div class="feature-icons">
-            <div class="feature-icon-block">
-                <img src="/images/green1.png" alt="利率查詢" class="green-icon" />
-                <ul>
-                    <li><a href="#">利率查詢</a></li>
-                    <li><a href="#">保單費率</a></li>
-                    <li><a href="#">外匯匯率</a></li>
-                </ul>
-            </div>
-            <div class="feature-icon-block">
-                <img src="/images/green2.png" alt="壽險" class="green-icon" />
-                <ul>
-                    <li><a href="#">壽險</a></li>
-                    <li><a href="#">保單查詢</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="notice-bottom">
-        <div class="orange-icons-row2">
-            <div class="orange-icon-block">
-                <a href="#"><img src="/images/orange1.png" alt="友善專區" class="orange-icon" /></a>
-                <div class="icon-title">友善專區</div>
-            </div>
-            <div class="orange-icon-block">
-                <a href="#"><img src="/images/orange2.png" alt="理財專區" class="orange-icon" /></a>
-                <div class="icon-title">理財專區</div>
-            </div>
-            <div class="orange-icon-block">
-                <a href="#"><img src="/images/orange3.png" alt="精打細算" class="orange-icon" /></a>
-                <div class="icon-title">精打細算</div>
-            </div>
-            <div class="orange-icon-block">
-                <a href="#"><img src="/images/orange4.png" alt="繳費專區" class="orange-icon" /></a>
-                <div class="icon-title">繳費專區</div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- 郵件壽險保戶子女獎學金內容區塊，預設隱藏 -->
 <div class="scholarship-content" id="scholarship-content" style="display:none; padding: 32px;">
