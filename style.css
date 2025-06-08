@@ -110,7 +110,7 @@ nav li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: #FFE5B4; /* 淡橘色背景 */
+    background: #F2EBA1; /* 淡橘色背景 */
     border: 2.5px solid #FF9900; /* 深橘色描邊 */
     border-radius: 12px;
     margin-left: 240px;
@@ -119,18 +119,6 @@ nav li a:hover {
 
 .login-panel-square.shrink-font {
     font-size: 0.2em;
-}
-
-.form {
-    flex-grow: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 8px 0 0 0;
-    background: #F2EBA1; /* 淡橘色背景 */
-    border-radius: 8px;
-    box-sizing: border-box;
 }
 
 .login-panel-square .tabs {
@@ -147,7 +135,6 @@ nav li a:hover {
     padding: 8px 10px;
     font-size: 1em;
     height: 36px;
-    wid
     margin-bottom: 0;
     border: 1px solid #bfc9d1;
     border-radius: 5px;
@@ -293,7 +280,7 @@ nav li a:hover {
     display: none;
     flex-direction: column;
     gap: 10px;
-    background: #FFE5B4; /* 淡橘色背景 */
+    background: #F2EBA1; /* 淡橘色背景，與登入框一致 */
     border-radius: 8px;
     box-sizing: border-box;
 }
