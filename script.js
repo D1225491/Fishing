@@ -20,13 +20,17 @@ function closeModal() {
 const tabs = document.querySelectorAll(".tab");
 const forms = document.querySelectorAll(".form");
 
-
 tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
         // 標籤樣式切換
-        tabs.forEach(t => t.classList.remove("active"));
+        tabs.forEach((t, i) => {
+            t.classList.remove("active");
+            t.style.background = "white";
+            t.style.color = "#9D9D9D"; // 灰色
+        });
         tab.classList.add("active");
-
+        tab.style.background = "#F2EBA1"; // 橘色底
+        tab.style.color = "#6D973B"; // 綠色
         // 顯示對應表單
         forms.forEach(f => f.classList.remove("active"));
         forms[index].classList.add("active");
@@ -117,62 +121,27 @@ loginButtons.forEach(btn => {
                 hasEmpty = true;
             }
         });
+        if (hasEmpty) {
+            showModal("請完整填寫所有欄位");
+            e.preventDefault();
+            return;
+        }
         // 驗證碼比對（canvas 版本）
         const captchaInput = activeForm.querySelector('.captcha-input');
         const captchaCanvas = activeForm.querySelector('.captcha-canvas');
         if (captchaInput && captchaCanvas) {
             if (captchaInput.value.trim() !== captchaCanvas.dataset.captcha) {
-                hasEmpty = true;
-                if (!captchaInput.nextElementSibling || !captchaInput.nextElementSibling.classList.contains('required-msg')) {
-                    const msg = document.createElement('div');
-                    msg.textContent = '驗證碼錯誤';
-                    msg.className = 'required-msg';
-                    msg.style.color = 'red';
-                    msg.style.fontSize = '0.9em';
-                    msg.style.marginTop = '2px';
-                    captchaInput.after(msg);
-                }
+                alert('驗證碼錯誤');
                 setCaptcha(activeForm); // 錯誤時自動換新驗證碼
+                captchaInput.value = '';
+                e.preventDefault();
+                return;
             }
-        }
-        if (hasEmpty) {
-            e.preventDefault();
-            return;
         }
         showModal("登入成功！歡迎使用中華郵政網路郵局 👋");
     });
 });
 
-// 驗證登入欄位是否為空，若為空則 alert
-function validateLogin(formSelector) {
-    const form = document.querySelector(formSelector);
-    if (!form) return;
-    form.addEventListener('click', function(e) {
-        if (e.target.classList.contains('login-button')) {
-            // 找到同一 row 的 input
-            const row = e.target.closest('.row-inline');
-            const input = row ? row.querySelector('input') : null;
-            // 取得所有需要檢查的 input
-            const inputs = Array.from(form.querySelectorAll('input[type="text"], input[type="password"]'));
-            let empty = false;
-            for (const inp of inputs) {
-                if (!inp.value.trim()) {
-                    empty = true;
-                    break;
-                }
-            }
-            if (empty) {
-                showModal('請完整填寫所有欄位');
-                e.preventDefault();
-                return false;
-            }
-        }
-    });
-}
-
-// 初始化兩個表單的驗證
-validateLogin('.id-form');
-validateLogin('.account-form');
 
 // 郵件壽險保戶子女獎學金區塊顯示/隱藏
 const scholarshipLink = document.getElementById("scholarship-link");
@@ -291,3 +260,8 @@ window.addEventListener('DOMContentLoaded', setupNoticeDropdowns);
 // 若 tab 切換也需調整
 const tabBtns = document.querySelectorAll('.tab');
 tabBtns.forEach(btn => btn.addEventListener('click', adjustLoginPanelFont));
+
+// 彈出通知訊息的 showModal 定義（改為 alert 版本）
+function showModal(message) {
+    alert(message);
+}
