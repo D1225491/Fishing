@@ -39,6 +39,25 @@
     </ul>
 </nav>
 
+<!-- 警示框 -->
+<div class="modal-overlay" id="alertModal">
+    <div class="modal-content">
+        <h2>請勿依他人指示操作，以維護帳戶安全。</h2>
+        <p>
+            親愛的客戶您好：<br>
+            近來網路交易詐騙頻傳，詐騙集團可能會假冒商家或金融機構名義，透過電話、通訊軟體等方式，藉故以帳務核對、消費退款等問題，請您提供個人資料，再誘導您依其指示操作轉帳等交易，另提醒您，租賣或提供帳戶給不法集團使用，恐觸犯刑法「幫助詐欺取財罪」及洗錢防制法「幫助洗錢罪」或「非法交付帳戶罪」!接獲可疑來電或遭受詐騙，請撥打警政署反詐騙專線「165」請求協助。
+
+        </p>
+        <label>
+            <input type="checkbox" id="dontShowAgain" />
+            不再顯示公告訊息
+        </label>
+        <br><br>
+        <button onclick="closeModal()">關閉</button>
+    </div>
+</div>
+
+
 <!-- 主體內容 -->
 <div class="main-content" id="main-content">
     <div class="main-flex">

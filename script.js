@@ -1,8 +1,25 @@
+// 警示框
+window.onload = function () {
+    const modal = document.getElementById("alertModal");
+    const dontShow = localStorage.getItem("hidePostModal");
+
+    if (dontShow !== "true") {
+        modal.style.display = "flex";
+    }
+};
+function closeModal() {
+    const checkbox = document.getElementById("dontShowAgain");
+    if (checkbox.checked) {
+        localStorage.setItem("hidePostModal", "true");
+    }
+    document.getElementById("alertModal").style.display = "none";
+}
+
+
 // 切換登入方式（身分證 / 帳號）
 const tabs = document.querySelectorAll(".tab");
 const forms = document.querySelectorAll(".form");
 
-alert("提醒您：本頁為仿網路郵局介面，不具備真實功能，請勿輸入真實資料。");
 
 tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
@@ -122,7 +139,7 @@ loginButtons.forEach(btn => {
             e.preventDefault();
             return;
         }
-        alert("登入成功！歡迎使用中華郵政網路郵局 👋");
+        showModal("登入成功！歡迎使用中華郵政網路郵局 👋");
     });
 });
 
@@ -145,7 +162,7 @@ function validateLogin(formSelector) {
                 }
             }
             if (empty) {
-                alert('請完整填寫所有欄位');
+                showModal('請完整填寫所有欄位');
                 e.preventDefault();
                 return false;
             }
