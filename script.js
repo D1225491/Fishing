@@ -14,6 +14,7 @@ function closeModal() {
     }
     document.getElementById("alertModal").style.display = "none";
 }
+localStorage.removeItem("hidePostModal");
 
 
 // 切換登入方式（身分證 / 帳號）

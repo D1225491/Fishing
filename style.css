@@ -39,6 +39,29 @@ body {
     color: #006400; /* 郵局綠 */
 }
 
+.modal-overlay {
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑底 */
+    z-index: 9999; /* 確保蓋住其他內容 */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff8e7;
+    padding: 24px;
+    border-radius: 10px;
+    max-width: 500px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+
 /* 頁首 */
 .header {
     background: #fff;
@@ -127,13 +150,14 @@ nav li a:hover {
 
 .tabs {
     display: flex;
-    border-bottom: 2px solid #FFB938;
+    border-bottom: 2px solid #FFF1D6;
     margin-bottom: 4px;
+    background: #FFF8E7; /* 新增：tabs 整體背景很淡的米色 */
 }
 .tab {
     flex: 1;
     padding: 12px 16px;
-    background: #F2EBA1;
+    background: #FFF8E7; /* 修改：tab 背景為很淡的米色 */
     border: none;
     border-radius: 0;
     font-weight: bold;
@@ -144,7 +168,6 @@ nav li a:hover {
 }
 .tab.active {
     border-color: #FF9900;
-    border-bottom: 1px solid white;
 }
 .tab-content {
     display: none;
@@ -740,60 +763,4 @@ input[type="password"] {
 .row-inline input[type="password"] {
     flex: 1 1 0;
     width: 50%;
-}
-.id-short-input {
-    width: 60px;
-    min-width: 0;
-    flex-shrink: 0;
-    font-size: 0.97em;
-    height: 28px;
-}
-
-/* Modal 視窗樣式 */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-.modal-content {
-    background: #fff;
-    padding: 30px 40px;
-    border-radius: 0;
-    max-width: 800px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    text-align: center;
-    min-width: 350px;
-}
-.modal-content h2 {
-    color: red;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-}
-.modal-content p {
-    font-size: 0.95rem;
-    text-align: left;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-.modal-content label {
-    font-size: 0.9rem;
-}
-.modal-content button {
-    background-color: orange;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.modal-content .modal-message {
-  font-weight: bold;
 }
